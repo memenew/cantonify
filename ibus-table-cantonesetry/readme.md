@@ -7,3 +7,13 @@
 > cp cantonesetry.db  /usr/share/ibus-table/tables/.
 
 3、裝添加CantoneTry輸入法。Fedora在輸入法嘅Chinese(Hong Kong)下。
+
+4、如果自己修改碼表，用呢個命令刷新ibus
+>ibus-daemon -drx
+
+5、對於100個後選字限製導致第一次打某字時無法列出，解決方案係修改/usr/share/ibus-table/engine/tabsqlitedb.py
+將
+>maximum_number_of_candidates = 200
+改成
+>maximum_number_of_candidates = 100
+只要輸入果一次，就會將字排到前面，下次輸入就好方便。
